@@ -32,8 +32,15 @@ public class UserServiceImpl implements UserService{
         userRepository.save(user);
     }
 
+
+
     @Override
     public boolean isUserAlreadyPresent(User user) {
         return false;
+    }
+
+    @Override
+    public User getUserByID(Long ID) {
+        return userRepository.getById(ID);
     }
 }

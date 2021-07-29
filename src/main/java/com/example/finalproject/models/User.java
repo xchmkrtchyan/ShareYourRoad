@@ -24,6 +24,10 @@ public class User {
     @Column(name = "last_name")
     private String lastName;
 
+    @NotNull(message="Gender is compulsory")
+    @Column(name = "gender")
+    private String gender;
+
     @NotNull(message="Email is compulsory")
     @Email(message = "Email is invalid")
     @Column(name = "email")
@@ -44,6 +48,14 @@ public class User {
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "auth_user_role", joinColumns = @JoinColumn(name = "auth_user_id"), inverseJoinColumns = @JoinColumn(name = "auth_role_id"))
     private Set<Role> roles;
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
 
     public Long getID() {
         return ID;
