@@ -25,10 +25,10 @@ public class AuthenticationController {
         return modelAndView;
     }
 
-    @RequestMapping(value = {"/home"},method = RequestMethod.GET)
+    @RequestMapping(value = {"/index"},method = RequestMethod.GET)
     public ModelAndView home(){
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("home");//resources/templates/home.html
+        modelAndView.setViewName("index");//resources/templates/home.html
         return modelAndView;
     }
 
