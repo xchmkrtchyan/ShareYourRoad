@@ -2,7 +2,7 @@ package com.example.finalproject.security;
 
 import com.example.finalproject.security.jwt.AuthEntryPointJwt;
 import com.example.finalproject.security.jwt.AuthTokenFilter;
-import com.example.finalproject.security.services.UserDetailsServiceImpl;
+import com.example.finalproject.service.userDetails.MyUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,7 +22,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
-	UserDetailsServiceImpl userDetailsService;
+	MyUserDetailsService userDetailsService;
 
 	@Autowired
 	private AuthEntryPointJwt unauthorizedHandler;

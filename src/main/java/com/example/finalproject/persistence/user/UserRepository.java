@@ -1,6 +1,6 @@
-package com.example.finalproject.repository;
+package com.example.finalproject.persistence.user;
 
-import com.example.finalproject.models.User;
+import com.example.finalproject.persistence.user.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

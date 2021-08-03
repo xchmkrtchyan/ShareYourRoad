@@ -1,7 +1,8 @@
-package com.example.finalproject.security.services;
+package com.example.finalproject.service.userDetails;
 
-import com.example.finalproject.models.User;
-import com.example.finalproject.repository.UserRepository;
+import com.example.finalproject.persistence.user.UserRepository;
+import com.example.finalproject.service.userDetails.model.MyUserDetails;
+import com.example.finalproject.persistence.user.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -10,7 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public class UserDetailsServiceImpl implements UserDetailsService {
+public class MyUserDetailsService implements UserDetailsService {
 	@Autowired
 	UserRepository userRepository;
 
@@ -20,7 +21,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		User user = userRepository.findByUsername(username)
 				.orElseThrow(() -> new UsernameNotFoundException("User Not Found with username: " + username));
 
-		return UserDetailsImpl.build(user);
+		return MyUserDetails.build(user);
 	}
 
 }

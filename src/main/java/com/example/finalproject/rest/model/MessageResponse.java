@@ -1,4 +1,4 @@
-package com.example.finalproject.payload.response;
+package com.example.finalproject.rest.model;
 
 public class MessageResponse {
 	private String message;

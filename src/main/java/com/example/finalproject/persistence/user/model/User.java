@@ -1,4 +1,6 @@
-package com.example.finalproject.models;
+package com.example.finalproject.persistence.user.model;
+
+import com.example.finalproject.persistence.role.model.Role;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -24,6 +26,18 @@ public class User {
 
 	@NotBlank
 	@Size(max = 50)
+	private String firstname;
+
+	@NotBlank
+	@Size(max = 50)
+	private String lastname;
+
+	@NotBlank
+	@Size(max = 50)
+	private String phone;
+
+	@NotBlank
+	@Size(max = 50)
 	@Email
 	private String email;
 
@@ -40,8 +54,12 @@ public class User {
 	public User() {
 	}
 
-	public User(String username, String email, String password) {
+	public User(String username, String firstname, String lastname,
+				String phone, String email, String password) {
 		this.username = username;
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.phone = phone;
 		this.email = email;
 		this.password = password;
 	}
@@ -50,16 +68,36 @@ public class User {
 		return id;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
-	}
-
 	public String getUsername() {
 		return username;
 	}
 
 	public void setUsername(String username) {
 		this.username = username;
+	}
+
+	public String getFirstname() {
+		return firstname;
+	}
+
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
+
+	public String getLastname() {
+		return lastname;
+	}
+
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 
 	public String getEmail() {
