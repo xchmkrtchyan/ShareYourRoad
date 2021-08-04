@@ -1,4 +1,6 @@
-package com.example.finalproject.models;
+package com.example.finalproject.persistence.role.model;
+
+import com.example.finalproject.persistence.user.model.UserRole;
 
 import javax.persistence.*;
 
@@ -7,33 +9,29 @@ import javax.persistence.*;
 public class Role {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private Long id;
 
 	@Enumerated(EnumType.STRING)
 	@Column(length = 20)
-	private ERole name;
+	private UserRole name;
 
 	public Role() {
 
 	}
 
-	public Role(ERole name) {
+	public Role(UserRole name) {
 		this.name = name;
 	}
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public ERole getName() {
+	public UserRole getName() {
 		return name;
 	}
 
-	public void setName(ERole name) {
+	public void setName(UserRole name) {
 		this.name = name;
 	}
 }

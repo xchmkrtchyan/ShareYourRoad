@@ -1,12 +1,12 @@
-package com.example.finalproject.service.impl;
+package com.example.finalproject.service.user.impl;
 
-import com.example.finalproject.models.ERole;
-import com.example.finalproject.models.Role;
-import com.example.finalproject.models.User;
-import com.example.finalproject.payload.request.SignupRequest;
-import com.example.finalproject.repository.RoleRepository;
-import com.example.finalproject.repository.UserRepository;
-import com.example.finalproject.service.UserService;
+import com.example.finalproject.persistence.user.model.UserRole;
+import com.example.finalproject.persistence.role.model.Role;
+import com.example.finalproject.persistence.user.model.User;
+import com.example.finalproject.rest.model.UserRequest;
+import com.example.finalproject.persistence.role.RoleRepository;
+import com.example.finalproject.persistence.user.UserRepository;
+import com.example.finalproject.service.user.UserService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -29,46 +29,48 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Boolean existsByUsername(SignupRequest signupRequest) {
-        return userRepository.existsByUsername(signupRequest.getUsername());
+    public Boolean existsByUsername(UserRequest userRequest) {
+        return userRepository.existsByUsername(userRequest.getUsername());
     }
 
     @Override
-    public Boolean existsByEmail(SignupRequest signupRequest) {
-        return userRepository.existsByEmail(signupRequest.getEmail());
+    public Boolean existsByEmail(UserRequest userRequest) {
+        return userRepository.existsByEmail(userRequest.getEmail());
     }
 
-    public void createUser(SignupRequest signUpRequest) {
-        User user = new User(signUpRequest.getUsername(),
-                signUpRequest.getEmail(),
-                encoder.encode(signUpRequest.getPassword()));
+    public void createUser(UserRequest userRequest) {
+        User user = new User(userRequest.getUsername(),
+                userRequest.getFirstname(),
+                userRequest.getLastname(),
+                userRequest.getPhone(),
+                userRequest.getEmail(),
+                encoder.encode(userRequest.getPassword()));
 
-        Set<String> strRoles = signUpRequest.getRole();
+        Set<String> strRoles = userRequest.getRole();
         Set<Role> roles = new HashSet<>();
 
         if (strRoles == null) {
-            Role userRole = roleRepository.findByName(ERole.ROLE_USER)
+            Role userRole = roleRepository.findByName(UserRole.ROLE_USER)
                     .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
             roles.add(userRole);
         } else {
             strRoles.forEach(role -> {
                 switch (role) {
                     case "admin":
-                        Role adminRole = roleRepository.findByName(ERole.ROLE_ADMIN)
+                        Role adminRole = roleRepository.findByName(UserRole.ROLE_ADMIN)
                                 .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
                         roles.add(adminRole);
-
                         break;
                     case "mod":
-                        Role modRole = roleRepository.findByName(ERole.ROLE_MODERATOR)
+                        Role modRole = roleRepository.findByName(UserRole.ROLE_MODERATOR)
                                 .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
                         roles.add(modRole);
-
                         break;
                     default:
-                        Role userRole = roleRepository.findByName(ERole.ROLE_USER)
+                        Role userRole = roleRepository.findByName(UserRole.ROLE_USER)
                                 .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
                         roles.add(userRole);
+                        break;
                 }
             });
         }

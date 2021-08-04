@@ -1,17 +1,13 @@
-package com.example.finalproject.controllers;
+package com.example.finalproject.rest;
 
-import com.example.finalproject.models.ERole;
-import com.example.finalproject.models.Role;
-import com.example.finalproject.models.User;
-import com.example.finalproject.payload.request.LoginRequest;
-import com.example.finalproject.payload.request.SignupRequest;
-import com.example.finalproject.payload.response.JwtResponse;
-import com.example.finalproject.payload.response.MessageResponse;
-import com.example.finalproject.repository.RoleRepository;
-import com.example.finalproject.repository.UserRepository;
+import com.example.finalproject.rest.model.UserResponse;
+import com.example.finalproject.rest.model.MessageResponse;
+import com.example.finalproject.persistence.user.UserRepository;
+import com.example.finalproject.rest.model.LoginRequest;
+import com.example.finalproject.rest.model.UserRequest;
 import com.example.finalproject.security.jwt.JwtUtils;
-import com.example.finalproject.security.services.UserDetailsImpl;
-import com.example.finalproject.service.impl.UserServiceImpl;
+import com.example.finalproject.service.userDetails.model.MyUserDetails;
+import com.example.finalproject.service.user.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -19,19 +15,16 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@RequestMapping("/api/auth")
-public class AuthController {
+@RequestMapping("/api/user")
+public class UserController {
 
     @Autowired
     UserServiceImpl userService;
@@ -52,35 +45,38 @@ public class AuthController {
                 new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
-        String jwt = jwtUtils.generateJwtToken(authentication);
+        String token = jwtUtils.generateJwtToken(authentication);
 
-        UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
+        MyUserDetails userDetails = (MyUserDetails) authentication.getPrincipal();
         List<String> roles = userDetails.getAuthorities().stream()
                 .map(GrantedAuthority::getAuthority)
                 .collect(Collectors.toList());
 
-        return ResponseEntity.ok(new JwtResponse(jwt,
+        return ResponseEntity.ok(new UserResponse(token,
                 userDetails.getId(),
                 userDetails.getUsername(),
+                userDetails.getFirstname(),
+                userDetails.getLastname(),
+                userDetails.getPhone(),
                 userDetails.getEmail(),
                 roles));
     }
 
     @PostMapping("/signup")
-    public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
-        if (userService.existsByUsername(signUpRequest)) {
+    public ResponseEntity<?> registerUser(@Valid @RequestBody UserRequest userRequest) {
+        if (userService.existsByUsername(userRequest)) {
             return ResponseEntity
                     .badRequest()
                     .body(new MessageResponse("Error: Username is already taken!"));
         }
 
-        if (userService.existsByEmail(signUpRequest)) {
+        if (userService.existsByEmail(userRequest)) {
             return ResponseEntity
                     .badRequest()
                     .body(new MessageResponse("Error: Email is already in use!"));
         }
 
-        userService.createUser(signUpRequest);
+        userService.createUser(userRequest);
         return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
     }
 }
