@@ -44,7 +44,7 @@ public class UserServiceImpl implements UserService {
                 userRequest.getLastname(),
                 userRequest.getPhone(),
                 userRequest.getEmail(),
-                encoder.encode(userRequest.getPassword()));
+                encoder.encode(userRequest.getPassword()), userRequest.getGender());
 
         Set<String> strRoles = userRequest.getRole();
         Set<Role> roles = new HashSet<>();

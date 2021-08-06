@@ -31,6 +31,10 @@ public class UserRequest {
     @Size(min = 6, max = 40)
     private String password;
 
+    @NotBlank
+    @Size(max = 20)
+    private String gender;
+
     private Set<String> role;
 
     public String getUsername() {
@@ -87,5 +91,13 @@ public class UserRequest {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 }

@@ -59,7 +59,7 @@ public class UserController {
                 userDetails.getLastname(),
                 userDetails.getPhone(),
                 userDetails.getEmail(),
-                roles));
+                userDetails.getGender(), roles));
     }
 
     @PostMapping("/signup")
