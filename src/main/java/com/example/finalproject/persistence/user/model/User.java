@@ -49,6 +49,8 @@ public class User {
 	@Size(max = 20)
 	private String gender;
 
+	private String imageURL;
+
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(	name = "user_roles", 
 				joinColumns = @JoinColumn(name = "user_id"), 
@@ -137,4 +139,11 @@ public class User {
 		this.gender = gender;
 	}
 
+	public String getImageURL() {
+		return imageURL;
+	}
+
+	public void setImageURL(String imageURL) {
+		this.imageURL = imageURL;
+	}
 }
