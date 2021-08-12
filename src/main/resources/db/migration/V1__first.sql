@@ -1,13 +1,14 @@
 create table users
 (
     id bigint not null auto_increment,
-    email varchar(50),
+    username varchar(20),
     firstname varchar(50),
     lastname varchar(50),
-    password varchar(120),
-    gender varchar(50),
     phone varchar(50),
-    username varchar(20),
+    email varchar(50),
+    gender varchar(50),
+    password varchar(120),
+    imageURL varchar(255),
     primary key (id)
 );
 create table roles

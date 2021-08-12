@@ -12,12 +12,13 @@ public class UserResponse {
 	private String phone;
 	private String email;
 	private String gender;
+	private String imageURL;
 	private List<String> roles;
 
 	public UserResponse() {
 	}
 
-	public UserResponse(String token, Long id, String username, String firstname, String lastname, String phone, String email, String gender, List<String> roles) {
+	public UserResponse(String token, Long id, String username, String firstname, String lastname, String phone, String email, String gender, String imageURL, List<String> roles) {
 		this.token = token;
 		this.id = id;
 		this.username = username;
@@ -26,6 +27,7 @@ public class UserResponse {
 		this.phone = phone;
 		this.email = email;
 		this.gender = gender;
+		this.imageURL = imageURL;
 		this.roles = roles;
 	}
 
