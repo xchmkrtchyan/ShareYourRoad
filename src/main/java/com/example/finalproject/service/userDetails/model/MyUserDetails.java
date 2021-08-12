@@ -28,6 +28,8 @@ public class MyUserDetails implements UserDetails {
 
 	private String gender;
 
+	private String imageURL;
+
 	@JsonIgnore
 	private String password;
 
@@ -35,7 +37,7 @@ public class MyUserDetails implements UserDetails {
 
 	public MyUserDetails(Long id, String username, String firstname, String lastname,
 						 String phone, String email, String password, String gender,
-						 Collection<? extends GrantedAuthority> authorities) {
+						 String imageURL, Collection<? extends GrantedAuthority> authorities) {
 		this.id = id;
 		this.username = username;
 		this.firstname = firstname;
@@ -44,6 +46,7 @@ public class MyUserDetails implements UserDetails {
 		this.email = email;
 		this.gender = gender;
 		this.password = password;
+		this.imageURL = imageURL;
 		this.authorities = authorities;
 	}
 
@@ -61,7 +64,7 @@ public class MyUserDetails implements UserDetails {
 				user.getEmail(),
 				user.getPassword(),
 				user.getGender(),
-				authorities);
+				user.getImageURL(), authorities);
 	}
 
 	public Long getId() {
@@ -86,6 +89,10 @@ public class MyUserDetails implements UserDetails {
 
 	public String getGender() {
 		return gender;
+	}
+
+	public String getImageURL() {
+		return imageURL;
 	}
 
 	@Override
