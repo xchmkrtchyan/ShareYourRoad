@@ -100,4 +100,5 @@ public class UserRequest {
     public void setGender(String gender) {
         this.gender = gender;
     }
+
 }

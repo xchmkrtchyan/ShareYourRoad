@@ -49,6 +49,9 @@ public class User {
 	@Size(max = 20)
 	private String gender;
 
+	/*@NotBlank
+	private String imgUrl;*/
+
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(	name = "user_roles", 
 				joinColumns = @JoinColumn(name = "user_id"), 
@@ -68,6 +71,14 @@ public class User {
 		this.password = password;
 		this.gender = gender;
 	}
+
+	/*public String getImgUrl() {
+		return imgUrl;
+	}
+
+	public void setImgUrl(String imgUrl) {
+		this.imgUrl = imgUrl;
+	}*/
 
 	public Long getId() {
 		return id;

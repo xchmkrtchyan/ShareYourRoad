@@ -2,7 +2,6 @@ package com.example.finalproject.rest;
 
 import com.example.finalproject.rest.model.UserResponse;
 import com.example.finalproject.rest.model.MessageResponse;
-import com.example.finalproject.persistence.user.UserRepository;
 import com.example.finalproject.rest.model.LoginRequest;
 import com.example.finalproject.rest.model.UserRequest;
 import com.example.finalproject.security.jwt.JwtUtils;
@@ -33,9 +32,6 @@ public class UserController {
     AuthenticationManager authenticationManager;
 
     @Autowired
-    UserRepository userRepository;
-
-    @Autowired
     JwtUtils jwtUtils;
 
     @PostMapping("/signin")
@@ -43,7 +39,7 @@ public class UserController {
 
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
-
+        System.out.println("3213321");
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String token = jwtUtils.generateJwtToken(authentication);
 
@@ -52,14 +48,17 @@ public class UserController {
                 .map(GrantedAuthority::getAuthority)
                 .collect(Collectors.toList());
 
-        return ResponseEntity.ok(new UserResponse(token,
+        return ResponseEntity.ok(new UserResponse(
+                token,
                 userDetails.getId(),
                 userDetails.getUsername(),
                 userDetails.getFirstname(),
                 userDetails.getLastname(),
                 userDetails.getPhone(),
                 userDetails.getEmail(),
-                userDetails.getGender(), roles));
+                userDetails.getGender(),
+                /*userDetails.getImgUrl(),*/
+                roles));
     }
 
     @PostMapping("/signup")

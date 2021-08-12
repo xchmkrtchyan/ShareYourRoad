@@ -28,14 +28,14 @@ public class MyUserDetails implements UserDetails {
 
 	private String gender;
 
+	/*private String imgUrl;*/
+
 	@JsonIgnore
 	private String password;
 
 	private Collection<? extends GrantedAuthority> authorities;
 
-	public MyUserDetails(Long id, String username, String firstname, String lastname,
-						 String phone, String email, String password, String gender,
-						 Collection<? extends GrantedAuthority> authorities) {
+	public MyUserDetails(Long id, String username, String firstname, String lastname, String phone, String email, String gender, /*String imgUrl,*/ String password, Collection<? extends GrantedAuthority> authorities) {
 		this.id = id;
 		this.username = username;
 		this.firstname = firstname;
@@ -43,6 +43,7 @@ public class MyUserDetails implements UserDetails {
 		this.phone = phone;
 		this.email = email;
 		this.gender = gender;
+		/*this.imgUrl = imgUrl;*/
 		this.password = password;
 		this.authorities = authorities;
 	}
@@ -61,6 +62,7 @@ public class MyUserDetails implements UserDetails {
 				user.getEmail(),
 				user.getPassword(),
 				user.getGender(),
+				/*user.getImgUrl(),*/
 				authorities);
 	}
 
@@ -132,4 +134,12 @@ public class MyUserDetails implements UserDetails {
 		MyUserDetails user = (MyUserDetails) o;
 		return Objects.equals(id, user.id);
 	}
+
+/*	public String getImgUrl() {
+		return imgUrl;
+	}
+
+	public void setImgUrl(String imgUrl) {
+		this.imgUrl = imgUrl;
+	}*/
 }

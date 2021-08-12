@@ -1,3 +1,4 @@
+
 create table users
 (
     id bigint not null auto_increment,
@@ -8,6 +9,7 @@ create table users
     gender varchar(50),
     phone varchar(50),
     username varchar(20),
+/*    img_url varchar(255),*/
     primary key (id)
 );
 create table roles

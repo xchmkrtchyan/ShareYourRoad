@@ -7,6 +7,9 @@ import com.example.finalproject.rest.model.UserRequest;
 import com.example.finalproject.persistence.role.RoleRepository;
 import com.example.finalproject.persistence.user.UserRepository;
 import com.example.finalproject.service.user.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +23,7 @@ public class UserServiceImpl implements UserService {
 
     private final PasswordEncoder encoder;
 
-    private  final UserRepository userRepository;
+    private final UserRepository userRepository;
 
     public UserServiceImpl(RoleRepository roleRepository, PasswordEncoder encoder, UserRepository userRepository) {
         this.roleRepository = roleRepository;
@@ -44,7 +47,8 @@ public class UserServiceImpl implements UserService {
                 userRequest.getLastname(),
                 userRequest.getPhone(),
                 userRequest.getEmail(),
-                encoder.encode(userRequest.getPassword()), userRequest.getGender());
+                encoder.encode(userRequest.getPassword()),
+                userRequest.getGender());
 
         Set<String> strRoles = userRequest.getRole();
         Set<Role> roles = new HashSet<>();
