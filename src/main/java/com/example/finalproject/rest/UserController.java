@@ -1,10 +1,7 @@
 package com.example.finalproject.rest;
 
-import com.example.finalproject.rest.model.UserResponse;
-import com.example.finalproject.rest.model.MessageResponse;
+import com.example.finalproject.rest.model.*;
 import com.example.finalproject.persistence.user.UserRepository;
-import com.example.finalproject.rest.model.LoginRequest;
-import com.example.finalproject.rest.model.UserRequest;
 import com.example.finalproject.security.jwt.JwtUtils;
 import com.example.finalproject.service.userDetails.model.MyUserDetails;
 import com.example.finalproject.service.user.impl.UserServiceImpl;
@@ -60,6 +57,18 @@ public class UserController {
                 userDetails.getPhone(),
                 userDetails.getEmail(),
                 userDetails.getGender(), userDetails.getImageURL(), roles));
+    }
+
+    @PostMapping("/update")
+    public ResponseEntity<?> updateUser(@Valid @RequestBody UserUpdateRequest userUpdateRequest){
+        userService.updateUser(userUpdateRequest);
+        return ResponseEntity.ok(new MessageResponse("User updated successfully"));
+    }
+
+    @PostMapping("/delete")
+    public ResponseEntity<?> deleteUser(@Valid @RequestBody UserDeleteRequest userRequest){
+        userService.deleteUser(userRequest);
+        return ResponseEntity.ok(new MessageResponse("User deleted successfully"));
     }
 
     @PostMapping("/signup")

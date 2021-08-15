@@ -1,12 +1,15 @@
 package com.example.finalproject.persistence.user.model;
 
+import com.example.finalproject.persistence.post.model.Post;
 import com.example.finalproject.persistence.role.model.Role;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -56,6 +59,12 @@ public class User {
 				joinColumns = @JoinColumn(name = "user_id"), 
 				inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Set<Role> roles = new HashSet<>();
+
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(	name = "user_posts",
+			joinColumns = @JoinColumn(name = "user_id"),
+			inverseJoinColumns = @JoinColumn(name = "post_id"))
+	private Set<Post> posts = new HashSet<>();
 
 	public User() {
 	}
@@ -145,5 +154,17 @@ public class User {
 
 	public void setImageURL(String imageURL) {
 		this.imageURL = imageURL;
+	}
+
+	public Set<Post> getPosts() {
+		return posts;
+	}
+
+	public void setPosts(Set<Post> posts) {
+		this.posts = posts;
+	}
+
+	public void setPost(Post post) {
+		this.posts.add(post);
 	}
 }
