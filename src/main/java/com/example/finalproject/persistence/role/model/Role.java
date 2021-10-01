@@ -5,7 +5,7 @@ import com.example.finalproject.persistence.user.model.UserRole;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "roles")
+@Table(name = "roles",schema = "final_project")
 public class Role {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

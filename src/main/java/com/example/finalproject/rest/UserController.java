@@ -1,7 +1,6 @@
 package com.example.finalproject.rest;
 
 import com.example.finalproject.rest.model.*;
-import com.example.finalproject.persistence.user.UserRepository;
 import com.example.finalproject.security.jwt.JwtUtils;
 import com.example.finalproject.service.userDetails.model.MyUserDetails;
 import com.example.finalproject.service.user.impl.UserServiceImpl;
@@ -28,9 +27,6 @@ public class UserController {
 
     @Autowired
     AuthenticationManager authenticationManager;
-
-    @Autowired
-    UserRepository userRepository;
 
     @Autowired
     JwtUtils jwtUtils;

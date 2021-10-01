@@ -7,7 +7,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
 @Entity
-@Table(name = "posts")
+@Table(name = "posts",schema = "final_project")
 public class Post {
 
     @Id
@@ -39,13 +39,7 @@ public class Post {
         this.passengers = passengers;
     }
 
-    public Long getId() {
-        return id;
-    }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getStartPoint() {
         return startPoint;

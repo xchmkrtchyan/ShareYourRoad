@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
-@Table(	name = "users", 
+@Table(	name = "users", schema = "final_project",
 		uniqueConstraints = { 
 			@UniqueConstraint(columnNames = "username"),
 			@UniqueConstraint(columnNames = "email") 
@@ -55,13 +55,13 @@ public class User {
 	private String imageURL;
 
 	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(	name = "user_roles", 
+	@JoinTable(	name = "user_roles",schema = "final_project",
 				joinColumns = @JoinColumn(name = "user_id"), 
 				inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Set<Role> roles = new HashSet<>();
 
-	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(	name = "user_posts",
+	@ManyToMany(fetch = FetchType.LAZY,cascade = {CascadeType.REMOVE})
+	@JoinTable(	name = "user_posts",schema = "final_project",
 			joinColumns = @JoinColumn(name = "user_id"),
 			inverseJoinColumns = @JoinColumn(name = "post_id"))
 	private Set<Post> posts = new HashSet<>();
