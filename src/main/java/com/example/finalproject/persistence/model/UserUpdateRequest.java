@@ -1,9 +1,4 @@
-package com.example.finalproject.rest.model;
-
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
-import java.util.Set;
+package com.example.finalproject.persistence.model;
 
 public class UserUpdateRequest {
     private String username;

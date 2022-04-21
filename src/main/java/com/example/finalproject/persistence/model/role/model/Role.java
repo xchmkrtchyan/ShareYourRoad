@@ -1,6 +1,6 @@
-package com.example.finalproject.persistence.role.model;
+package com.example.finalproject.persistence.model.role.model;
 
-import com.example.finalproject.persistence.user.model.UserRole;
+import com.example.finalproject.persistence.model.user.model.UserRole;
 
 import javax.persistence.*;
 

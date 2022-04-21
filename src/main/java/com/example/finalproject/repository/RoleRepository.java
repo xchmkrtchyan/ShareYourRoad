@@ -1,9 +1,8 @@
-package com.example.finalproject.persistence.role;
+package com.example.finalproject.repository;
 
-import com.example.finalproject.persistence.user.model.UserRole;
-import com.example.finalproject.persistence.role.model.Role;
+import com.example.finalproject.persistence.model.user.model.UserRole;
+import com.example.finalproject.persistence.model.role.model.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;

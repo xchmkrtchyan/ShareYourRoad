@@ -1,4 +1,4 @@
-package com.example.finalproject.rest.model;
+package com.example.finalproject.persistence.model;
 
 public class MessageResponse {
 	private String message;

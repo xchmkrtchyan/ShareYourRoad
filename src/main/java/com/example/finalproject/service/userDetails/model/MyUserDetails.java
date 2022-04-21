@@ -1,6 +1,6 @@
 package com.example.finalproject.service.userDetails.model;
 
-import com.example.finalproject.persistence.user.model.User;
+import com.example.finalproject.persistence.model.user.model.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

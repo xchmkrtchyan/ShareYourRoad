@@ -1,9 +1,9 @@
 package com.example.finalproject.service.user;
 
 
-import com.example.finalproject.rest.model.UserDeleteRequest;
-import com.example.finalproject.rest.model.UserRequest;
-import com.example.finalproject.rest.model.UserUpdateRequest;
+import com.example.finalproject.persistence.model.UserDeleteRequest;
+import com.example.finalproject.persistence.model.UserRequest;
+import com.example.finalproject.persistence.model.UserUpdateRequest;
 
 public interface UserService {
     //

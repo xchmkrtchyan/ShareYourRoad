@@ -1,4 +1,4 @@
-package com.example.finalproject.rest.model;
+package com.example.finalproject.persistence.model;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;

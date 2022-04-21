@@ -1,14 +1,10 @@
-package com.example.finalproject.persistence.post.model;
-
-
-import com.example.finalproject.persistence.user.model.User;
+package com.example.finalproject.persistence.model;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 
 @Entity
-@Table(name = "posts",schema = "final_project")
-public class Post {
+@Table(name = "posts")
+public class PostRequest {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,19 +23,13 @@ public class Post {
     private Long passengers;
 
 
-    public Post() {
+    public Long getId() {
+        return id;
     }
 
-    public Post(String username, String startPoint, String endPoint, String startPointDate, String endPointDate, Long passengers) {
-        this.username = username;
-        this.startPoint = startPoint;
-        this.endPoint = endPoint;
-        this.startPointDate = startPointDate;
-        this.endPointDate = endPointDate;
-        this.passengers = passengers;
+    public void setId(Long id) {
+        this.id = id;
     }
-
-
 
     public String getStartPoint() {
         return startPoint;
@@ -80,4 +70,13 @@ public class Post {
     public void setPassengers(Long passengers) {
         this.passengers = passengers;
     }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 }
+

@@ -1,13 +1,13 @@
 package com.example.finalproject.service.user.impl;
 
-import com.example.finalproject.persistence.role.RoleRepository;
-import com.example.finalproject.persistence.role.model.Role;
-import com.example.finalproject.persistence.user.UserRepository;
-import com.example.finalproject.persistence.user.model.User;
-import com.example.finalproject.persistence.user.model.UserRole;
-import com.example.finalproject.rest.model.UserDeleteRequest;
-import com.example.finalproject.rest.model.UserRequest;
-import com.example.finalproject.rest.model.UserUpdateRequest;
+import com.example.finalproject.repository.RoleRepository;
+import com.example.finalproject.persistence.model.role.model.Role;
+import com.example.finalproject.repository.UserRepository;
+import com.example.finalproject.persistence.model.user.model.User;
+import com.example.finalproject.persistence.model.user.model.UserRole;
+import com.example.finalproject.persistence.model.UserDeleteRequest;
+import com.example.finalproject.persistence.model.UserRequest;
+import com.example.finalproject.persistence.model.UserUpdateRequest;
 import com.example.finalproject.service.user.UserService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

@@ -1,7 +1,7 @@
 package com.example.finalproject.service.post;
 
-import com.example.finalproject.persistence.post.model.Post;
-import com.example.finalproject.rest.model.PostRequest;
+import com.example.finalproject.persistence.model.post.model.Post;
+import com.example.finalproject.persistence.model.PostRequest;
 
 import java.util.List;
 

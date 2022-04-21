@@ -1,4 +1,4 @@
-package com.example.finalproject.rest.model;
+package com.example.finalproject.persistence.model;
 
 import java.util.List;
 

@@ -1,10 +1,10 @@
 package com.example.finalproject.service.post.impl;
 
-import com.example.finalproject.persistence.post.PostRepository;
-import com.example.finalproject.persistence.post.model.Post;
-import com.example.finalproject.persistence.user.UserRepository;
-import com.example.finalproject.persistence.user.model.User;
-import com.example.finalproject.rest.model.PostRequest;
+import com.example.finalproject.repository.PostRepository;
+import com.example.finalproject.persistence.model.post.model.Post;
+import com.example.finalproject.repository.UserRepository;
+import com.example.finalproject.persistence.model.user.model.User;
+import com.example.finalproject.persistence.model.PostRequest;
 import com.example.finalproject.service.post.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

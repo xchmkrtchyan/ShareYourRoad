@@ -1,8 +1,8 @@
 package com.example.finalproject.rest;
 
-import com.example.finalproject.persistence.post.model.Post;
-import com.example.finalproject.rest.model.MessageResponse;
-import com.example.finalproject.rest.model.PostRequest;
+import com.example.finalproject.persistence.model.post.model.Post;
+import com.example.finalproject.persistence.model.MessageResponse;
+import com.example.finalproject.persistence.model.PostRequest;
 import com.example.finalproject.service.post.impl.PostServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

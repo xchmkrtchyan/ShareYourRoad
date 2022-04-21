@@ -1,8 +1,8 @@
 package com.example.finalproject.service.userDetails;
 
-import com.example.finalproject.persistence.user.UserRepository;
+import com.example.finalproject.repository.UserRepository;
 import com.example.finalproject.service.userDetails.model.MyUserDetails;
-import com.example.finalproject.persistence.user.model.User;
+import com.example.finalproject.persistence.model.user.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

@@ -1,15 +1,13 @@
-package com.example.finalproject.persistence.user.model;
+package com.example.finalproject.persistence.model.user.model;
 
-import com.example.finalproject.persistence.post.model.Post;
-import com.example.finalproject.persistence.role.model.Role;
+import com.example.finalproject.persistence.model.post.model.Post;
+import com.example.finalproject.persistence.model.role.model.Role;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
